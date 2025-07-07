@@ -1,21 +1,17 @@
-import { Image, Text, View,ScrollView } from "react-native";
+import { View, Text } from "react-native";
 
-
-
-export default function ProfileDisplay() {
+export default function IdentityCard() {
   return (
     <View
       style={{
         flex: 1,
-        alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#EFEFEF", // lebih soft dan berbeda
-        paddingHorizontal: 24,
+        alignItems: "center",
+        backgroundColor: "#FAF9F6", // latar estetik off-white
+        padding: 20,
       }}
-
     >
-      <ScrollView>
-      {/* Segitiga Warna Merah */}
+      {/* Segitiga Ungu Estetik */}
       <View
         style={{
           width: 0,
@@ -25,78 +21,53 @@ export default function ProfileDisplay() {
           borderBottomWidth: 96,
           borderLeftColor: "transparent",
           borderRightColor: "transparent",
-          borderBottomColor: "#FF0000", // red dalam hex
-          marginBottom: 18,
+          borderBottomColor: "#6C63FF", // ungu biru
+          marginBottom: 20,
         }}
       />
 
-      {/* Oval Biru untuk NIM */}
+      {/* Bentuk pil merah salmon untuk NIM */}
       <View
         style={{
-          width: 130,
           height: 52,
-          backgroundColor: "#0000FF", // blue dalam hex
-          borderRadius: 30,
-          alignItems: "center",
+          width: 130,
+          backgroundColor: "#FF6B6B", // merah lembut
           justifyContent: "center",
-          marginBottom: 18,
+          alignItems: "center",
+          borderRadius: 30,
+          marginBottom: 20,
         }}
       >
-        <Text style={{ color: "#FFF", fontWeight: "700" }}>105841106922</Text>
+        <Text
+          style={{
+            color: "#FFFFFF", // putih
+            fontWeight: "bold",
+          }}
+        >
+          105841106922
+        </Text>
       </View>
 
-      {/* Kotak Nama Oranye */}
+      {/* Kotak nama warna kuning pastel */}
       <View
         style={{
-          width: 210,
-          height: 50,
-          backgroundColor: "#FFA500", // orange hex
-          justifyContent: "center",
+          width: 200,
+          height: 60,
+          backgroundColor: "#FFD166", // kuning lembut
           alignItems: "center",
-          borderRadius: 12,
+          justifyContent: "center",
         }}
-
-
       >
         <Text
           style={{
             fontSize: 19,
-            color: "#000000",
+            color: "#2D3142", // abu gelap elegan
             fontWeight: "bold",
           }}
         >
           BASO HAMZAH
         </Text>
       </View>
-      <View
-      style={{
-        flexDirection: "row",
-  
-      }}
-      >
-    <Image source={{
-      uri: "https://simak.unismuh.ac.id/upload/mahasiswa/105841106922_.jpg?1751871539",
-    }}
-
-    style={{
-      marginTop: 18,
-      width: 100,
-      height: 150,
-    }}>
-    </Image>
-
-     <Image source={{
-      uri: "https://uploads-us-west-2.insided.com/figma-en/attachment/7105e9c010b3d1f0ea893ed5ca3bd58e6cec090e.gif",
-    }}
-
-    style={{
-      marginTop: 18,
-      width: 100,
-      height: 150,
-    }}>
-    </Image>
-</View>
-    </ScrollView>
     </View>
   );
 }

@@ -1,50 +1,102 @@
-# Welcome to your Expo app 👋
+<!-- import { Image, Text, View,ScrollView } from "react-native";
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Get started
 
-1. Install dependencies
+export default function ProfileDisplay() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#EFEFEF", // lebih soft dan berbeda
+        paddingHorizontal: 24,
+      }}
 
-   ```bash
-   npm install
-   ```
+    >
+      <ScrollView>
+      {/* Segitiga Warna Merah */}
+      <View
+        style={{
+          width: 0,
+          height: 0,
+          borderLeftWidth: 48,
+          borderRightWidth: 48,
+          borderBottomWidth: 96,
+          borderLeftColor: "transparent",
+          borderRightColor: "transparent",
+          borderBottomColor: "#FF0000", // red dalam hex
+          marginBottom: 18,
+        }}
+      />
 
-2. Start the app
+      {/* Oval Biru untuk NIM */}
+      <View
+        style={{
+          width: 130,
+          height: 52,
+          backgroundColor: "#0000FF", // blue dalam hex
+          borderRadius: 30,
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: 18,
+        }}
+      >
+        <Text style={{ color: "#FFF", fontWeight: "700" }}>105841106922</Text>
+      </View>
 
-   ```bash
-   npx expo start
-   ```
+      {/* Kotak Nama Oranye */}
+      <View
+        style={{
+          width: 210,
+          height: 50,
+          backgroundColor: "#FFA500", // orange hex
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: 12,
+        }}
 
-In the output, you'll find options to open the app in a
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+      >
+        <Text
+          style={{
+            fontSize: 19,
+            color: "#000000",
+            fontWeight: "bold",
+          }}
+        >
+          BASO HAMZAH
+        </Text>
+      </View>
+      <View
+      style={{
+        flexDirection: "row",
+  
+      }}
+      >
+    <Image source={{
+      uri: "https://simak.unismuh.ac.id/upload/mahasiswa/105841106922_.jpg?1751871539",
+    }}
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+    style={{
+      marginTop: 18,
+      width: 100,
+      height: 150,
+    }}>
+    </Image>
 
-## Get a fresh project
+     <Image source={{
+      uri: "https://uploads-us-west-2.insided.com/figma-en/attachment/7105e9c010b3d1f0ea893ed5ca3bd58e6cec090e.gif",
+    }}
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+    style={{
+      marginTop: 18,
+      width: 100,
+      height: 150,
+    }}>
+    </Image>
+</View>
+    </ScrollView>
+    </View>
+  );
+} -->
