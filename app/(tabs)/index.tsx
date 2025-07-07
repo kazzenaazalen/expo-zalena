@@ -1,75 +1,67 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Text, View } from "react-native";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function HomeScreen() {
+export default function ProfileDisplay() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#EFEFEF", // lebih soft dan berbeda
+        paddingHorizontal: 24,
+      }}
+    >
+      {/* Segitiga Warna Merah */}
+      <View
+        style={{
+          width: 0,
+          height: 0,
+          borderLeftWidth: 48,
+          borderRightWidth: 48,
+          borderBottomWidth: 96,
+          borderLeftColor: "transparent",
+          borderRightColor: "transparent",
+          borderBottomColor: "#FF0000", // red dalam hex
+          marginBottom: 18,
+        }}
+      />
+
+      {/* Oval Biru untuk NIM */}
+      <View
+        style={{
+          width: 130,
+          height: 52,
+          backgroundColor: "#0000FF", // blue dalam hex
+          borderRadius: 30,
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: 18,
+        }}
+      >
+        <Text style={{ color: "#FFF", fontWeight: "700" }}>105841106922</Text>
+      </View>
+
+      {/* Kotak Nama Oranye */}
+      <View
+        style={{
+          width: 210,
+          height: 62,
+          backgroundColor: "#FFA500", // orange hex
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: 12,
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 19,
+            color: "#000000",
+            fontWeight: "bold",
+          }}
+        >
+          BASO HAMZAH
+        </Text>
+      </View>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
