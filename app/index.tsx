@@ -7,11 +7,11 @@ export default function ProfileDisplay() {
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#EFEFEF",
+        backgroundColor: "#EFEFEF", // lebih soft dan berbeda
         paddingHorizontal: 24,
       }}
     >
-      {/* Segitiga Merah */}
+      {/* Segitiga Warna Merah */}
       <View
         style={{
           width: 0,
@@ -21,17 +21,17 @@ export default function ProfileDisplay() {
           borderBottomWidth: 96,
           borderLeftColor: "transparent",
           borderRightColor: "transparent",
-          borderBottomColor: "#FF0000",
+          borderBottomColor: "#FF0000", // red dalam hex
           marginBottom: 18,
         }}
       />
 
-      {/* Bentuk pil untuk NIM */}
+      {/* Oval Biru untuk NIM */}
       <View
         style={{
           width: 130,
           height: 52,
-          backgroundColor: "#0000FF",
+          backgroundColor: "#0000FF", // blue dalam hex
           borderRadius: 30,
           alignItems: "center",
           justifyContent: "center",
@@ -41,21 +41,21 @@ export default function ProfileDisplay() {
         <Text style={{ color: "#FFF", fontWeight: "700" }}>105841106922</Text>
       </View>
 
-      {/* Persegi Panjang untuk Nama */}
+      {/* Kotak Nama Oranye */}
       <View
         style={{
-          width: 200,     // lebih panjang
-          height: 60,     // lebih rendah → membentuk persegi panjang
-          backgroundColor: "#FFA500",
-          alignItems: "center",
+          width: 210,
+          height: 62,
+          backgroundColor: "#FFA500", // orange hex
           justifyContent: "center",
-          
+          alignItems: "center",
+          borderRadius: 12,
         }}
       >
         <Text
           style={{
-            fontSize: 18,
-            color: "#000",
+            fontSize: 19,
+            color: "#000000",
             fontWeight: "bold",
           }}
         >
