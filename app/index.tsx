@@ -1,4 +1,6 @@
-import { Text, View } from "react-native";
+import { Image, Text, View,ScrollView } from "react-native";
+
+
 
 export default function ProfileDisplay() {
   return (
@@ -10,7 +12,9 @@ export default function ProfileDisplay() {
         backgroundColor: "#EFEFEF", // lebih soft dan berbeda
         paddingHorizontal: 24,
       }}
+
     >
+      <ScrollView>
       {/* Segitiga Warna Merah */}
       <View
         style={{
@@ -45,12 +49,14 @@ export default function ProfileDisplay() {
       <View
         style={{
           width: 210,
-          height: 62,
+          height: 50,
           backgroundColor: "#FFA500", // orange hex
           justifyContent: "center",
           alignItems: "center",
           borderRadius: 12,
         }}
+
+
       >
         <Text
           style={{
@@ -62,6 +68,35 @@ export default function ProfileDisplay() {
           BASO HAMZAH
         </Text>
       </View>
+      <View
+      style={{
+        flexDirection: "row",
+  
+      }}
+      >
+    <Image source={{
+      uri: "https://simak.unismuh.ac.id/upload/mahasiswa/105841106922_.jpg?1751871539",
+    }}
+
+    style={{
+      marginTop: 18,
+      width: 100,
+      height: 150,
+    }}>
+    </Image>
+
+     <Image source={{
+      uri: "https://uploads-us-west-2.insided.com/figma-en/attachment/7105e9c010b3d1f0ea893ed5ca3bd58e6cec090e.gif",
+    }}
+
+    style={{
+      marginTop: 18,
+      width: 100,
+      height: 150,
+    }}>
+    </Image>
+</View>
+    </ScrollView>
     </View>
   );
 }
