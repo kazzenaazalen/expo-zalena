@@ -1,50 +1,184 @@
-# Welcome to your Expo app 👋
+TUGAS 1
+<!-- import { Image, ScrollView, Text, View } from "react-native";
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+export default function Index() {
+  return (
+    <ScrollView contentContainerStyle={{
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      gap: 20,
+    }}>
+      {/* SEGITIGA */}
+      <View
+        style={{
+          width: 0,
+          height: 0,
+          borderLeftWidth: 40,
+          borderRightWidth: 40,
+          borderBottomWidth: 70,
+          marginTop: 100,
+          borderLeftColor: 'transparent',
+          borderRightColor: 'transparent',
+          borderBottomColor: 'purple',
+        }}
+      />
+      {/* PIL (TABUNG HORIZONTAL) */}
+      <View
+        style={{
+          backgroundColor: 'black',
+          paddingHorizontal: 20,
+          paddingVertical: 10,
+          borderRadius: 999, // membuat bentuk kapsul
+        }}
+      >
+        <Text style={{ color: 'pink', fontSize: 16 }}>
+          105841107122
+        </Text>
+      </View>
+      {/* PERSEGI PANJANG */}
+      <View
+        style={{
+          backgroundColor: 'green',
+          padding: 15,
+          borderRadius: 0,
+          width: 150,
+          alignItems: 'center',
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 12,
+            fontWeight: 'bold',
+            color: 'white',
+          }}
+        >
+          KAZZENAA ZALEN
+        </Text>
+      </View>
+      <View>
+        <View style={{
+          flexDirection: "row"
+        }}>
+          <Image
+            style={{
+              width: 200,
+              height: 400,
+            }}
+            source={{
+              uri: "https://simak.unismuh.ac.id/upload/mahasiswa/105841107122_.jpg"
+            }}
+          />
+          <Image
+            style={{
+              width: 250,
+              height: 400,
+            }}
+            source={{
+              uri: "https://uploads-us-west-2.insided.com/figma-en/attachment/7105e9c010b3d1f0ea893ed5ca3bd58e6cec090e.gif"
+            }}
+          />
+        </View>
 
-## Get started
+      </View>
+    </ScrollView>
+  );
+} -->
 
-1. Install dependencies
+TUGAS 2
+import React, { useState } from 'react';
+import { View, Image, Pressable, StyleSheet, Dimensions, ScrollView } from 'react-native';
 
-   ```bash
-   npm install
-   ```
+const zal71GenerateImagePairs = () => {
+  const baseNIM = '10584110';
+  const suffix = '22';
+  const baseURL = 'https://simak.unismuh.ac.id/upload/mahasiswa/';
+  const query = '_.jpg?1751871539';
+   const altURL = 'https://uploads-us-west-2.insided.com/figma-en/attachment/7105e9c010b3d1f0ea893ed5ca3bd58e6cec090e.gif';
+  // const altURL = require('../../assets/images/tes.jpg')
+ // ← Gambar lokal kamu
 
-2. Start the app
+  const pairs = [];
 
-   ```bash
-   npx expo start
-   ```
+  for (let i = 71; i <= 79; i++) {
+    const nim = `${baseNIM}${i}${suffix}`;
+    const main = `${baseURL}${nim}${query}`;
+    const alt = altURL;
+    pairs.push({ main, alt });
+  }
 
-In the output, you'll find options to open the app in a
+  return pairs;
+};
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+const zal71ImagePairs = zal71GenerateImagePairs();
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+export default function zal71GambarGrid() {
+  const [zal71States, setzal71States] = useState(
+    zal71ImagePairs.map(() => ({ clickCount: 0 }))
+  );
 
-## Get a fresh project
+  const zal71HandlePress = (index: number) => {
+    setzal71States((prev) =>
+      prev.map((item, i) => {
+        if (i !== index) return item;
 
-When you're ready, run:
+        // Maksimal 3 kali klik
+        const newClickCount = Math.min(item.clickCount + 1, 3);
+        return { clickCount: newClickCount };
+      })
+    );
+  };
 
-```bash
-npm run reset-project
-```
+  const getImageSource = (pair: any, clickCount: number) => {
+    return clickCount >= 1 ? pair.alt : pair.main;
+  };
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+  const getScale = (clickCount: number) => {
+    if (clickCount === 2) return 1.2;
+    if (clickCount >= 3) return 2;
+    return 1;
+  };
 
-## Learn more
+  return (
+    <ScrollView contentContainerStyle={zal71Styles.grid}>
+      {zal71ImagePairs.map((pair, index) => {
+        const clickCount = zal71States[index].clickCount;
+        const image = getImageSource(pair, clickCount);
+        const scale = getScale(clickCount);
 
-To learn more about developing your project with Expo, look at the following resources:
+        return (
+          <Pressable key={index} onPress={() => zal71HandlePress(index)}>
+            <Image
+              source={{ uri: image }}
+              style={[
+                zal71Styles.image,
+                {
+                  transform: [{ scale }],
+                },
+              ]}
+            />
+          </Pressable>
+        );
+      })}
+    </ScrollView>
+  );
+}
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+const zal71Styles = StyleSheet.create({
+  grid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    padding: 10,
+  },
+  image: {
+    width: Dimensions.get('window').width / 3 - 20,
+    height: Dimensions.get('window').width / 3 - 20,
+    margin: 5,
+    borderRadius: 10,
+    resizeMode: 'cover',
+    backgroundColor: '#ddd',
+    borderWidth: 1,
+    borderColor: '#aaa',
+  },
+});
