@@ -1,98 +1,102 @@
 import React, { useState } from 'react';
-import { ScrollView, Image, Pressable, StyleSheet, Dimensions } from 'react-native';
+import {
+  ScrollView,
+  Pressable,
+  Image,
+  StyleSheet,
+  Dimensions,
+  View,
+} from 'react-native';
 
-const createImageSet = () => {
-  const altURL = 'https://i.pinimg.com/1200x/cf/e9/96/cfe996981acac35a7b7f01f1c5b95b78.jpg';
+// ===============================
+// KONFIGURASI GRAFIK / DATA NIM
+// ===============================
 
-  return [
-    { main: require('../assets/images/img1.jpg'), alt: altURL },
-    { main: require('../assets/images/img2.jpg'), alt: altURL },
-    { main: require('../assets/images/img3.jpg'), alt: altURL },
-    { main: require('../assets/images/img4.jpg'), alt: altURL },
-    { main: require('../assets/images/img5.jpg'), alt: altURL },
-    { main: require('../assets/images/img6.jpg'), alt: altURL },
-    { main: require('../assets/images/img7.jpg'), alt: altURL },
-    { main: require('../assets/images/img8.jpg'), alt: altURL },
-    { main: require('../assets/images/img9.jpg'), alt: altURL },
-  ];
+const nimAwal = '10584110';
+const nimAkhir = '22';
+const urlUtama = 'https://simak.unismuh.ac.id/upload/mahasiswa/';
+const parameterGambar = '_.jpg?1751871539';
+const gambarAlternatif =
+  'https://uploads-us-west-2.insided.com/figma-en/attachment/7105e9c010b3d1f0ea893ed5ca3bd58e6cec090e.gif';
+
+// ===============================
+// FUNGSI PEMBENTUK DATA GAMBAR
+// ===============================
+
+const buatDaftarGambar = () => {
+  const daftarGambar = [];
+
+  for (let i = 70; i <= 78; i++) {
+    const nim = `${nimAwal}${i}${nimAkhir}`;
+    const main = `${urlUtama}${nim}${parameterGambar}`;
+    daftarGambar.push({ main, alt: gambarAlternatif });
+  }
+
+  return daftarGambar;
 };
 
-const imageData = createImageSet();
+// ===============================
+// KOMPONEN UTAMA GRID GAMBAR
+// ===============================
 
-export default function ImageGridScreen() {
-  const [states, setStates] = useState(
-    imageData.map(() => ({
-      clickCount: 0,
-      scale: 1.0,
-      isAlt: false,
-    }))
+export default function GridGambar() {
+  const dataGambar = buatDaftarGambar();
+
+  const [statusGambar, setStatusGambar] = useState(
+    dataGambar.map(() => ({ scale: 1, isAlt: false }))
   );
 
-  const handleImagePress = (index: number) => {
-    setStates((prev) =>
+  const handleGambarTekan = (index: number) => {
+    setStatusGambar((prev) =>
       prev.map((item, i) => {
-        if (i !== index || item.clickCount >= 3) return item;
-
-        const newClickCount = item.clickCount + 1;
-        let newScale = item.scale;
-        let newIsAlt = item.isAlt;
-
-        if (newClickCount === 1) {
-          newIsAlt = true; 
-        } else if (newClickCount === 2) {
-          newScale = 1.2;  
-        } else if (newClickCount === 3) {
-          newScale = 2.0;  
-        }
-
+        if (i !== index) return item;
+        const newScale = item.scale < 2 ? item.scale * 1.2 : 2;
         return {
-          clickCount: newClickCount,
           scale: newScale,
-          isAlt: newIsAlt,
+          isAlt: !item.isAlt,
         };
       })
     );
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.gridContainer}>
-      {imageData.map((pair, index) => {
-        const { isAlt, scale } = states[index];
-        const source = isAlt ? { uri: pair.alt } : pair.main;
-
-        return (
-          <Pressable key={index} onPress={() => handleImagePress(index)}>
-            <Image
-              source={source}
-              style={[
-                styles.imageCell,
-                { transform: [{ scale }] },
-              ]}
-            />
-          </Pressable>
-        );
-      })}
+    <ScrollView contentContainerStyle={gaya.grid}>
+      {dataGambar.map((gambarItem, index) => (
+        <Pressable key={index} onPress={() => handleGambarTekan(index)}>
+          <Image
+            source={{ uri: statusGambar[index].isAlt ? gambarItem.alt : gambarItem.main }}
+            style={[
+              gaya.image,
+              {
+                transform: [{ scale: statusGambar[index].scale }],
+              },
+            ]}
+          />
+        </Pressable>
+      ))}
     </ScrollView>
   );
 }
 
-const IMAGE_SIZE = Dimensions.get('window').width / 3 - 20;
+// ===============================
+// GAYA
+// ===============================
 
-const styles = StyleSheet.create({
-  gridContainer: {
+const gaya = StyleSheet.create({
+  grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     padding: 10,
   },
-  imageCell: {
-    width: IMAGE_SIZE,
-    height: IMAGE_SIZE,
+  image: {
+    width: Dimensions.get('window').width / 3 - 20,
+    height: Dimensions.get('window').width / 3 - 20,
     margin: 5,
     borderRadius: 10,
     resizeMode: 'cover',
-    backgroundColor: '#eee',
+    backgroundColor: '#ddd',
     borderWidth: 1,
-    borderColor: '#bbb',
+    borderColor: '#aaa',
   },
 });
