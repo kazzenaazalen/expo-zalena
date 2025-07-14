@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Image, Pressable, StyleSheet, Dimensions, ScrollView } from 'react-native';
 
+
 const bas69GenerateImagePairs = () => {
   const baseNIM = '10584110';
   const suffix = '22';
@@ -20,15 +21,15 @@ const bas69GenerateImagePairs = () => {
   return pairs;
 };
 
-const imagePairs = bas69GenerateImagePairs();
+const bas69ImagePairs = bas69GenerateImagePairs();
 
 export default function Bas69GambarGrid() {
-  const [states, setStates] = useState(
-    imagePairs.map(() => ({ scale: 1, isAlt: false }))
+  const [bas69States, setBas69States] = useState(
+    bas69ImagePairs.map(() => ({ scale: 1, isAlt: false }))
   );
 
   const bas69HandlePress = (index: number) => {
-    setStates((prev) =>
+    setBas69States((prev) =>
       prev.map((item, i) => {
         if (i !== index) return item;
         const newScale = item.scale < 2 ? item.scale * 1.2 : 2;
@@ -42,14 +43,14 @@ export default function Bas69GambarGrid() {
 
   return (
     <ScrollView contentContainerStyle={bas69Styles.grid}>
-      {imagePairs.map((pair, index) => (
+      {bas69ImagePairs.map((pair, index) => (
         <Pressable key={index} onPress={() => bas69HandlePress(index)}>
           <Image
-            source={{ uri: states[index].isAlt ? pair.alt : pair.main }}
+            source={{ uri: bas69States[index].isAlt ? pair.alt : pair.main }}
             style={[
               bas69Styles.image,
               {
-                transform: [{ scale: states[index].scale }],
+                transform: [{ scale: bas69States[index].scale }],
               },
             ]}
           />
@@ -73,5 +74,7 @@ const bas69Styles = StyleSheet.create({
     borderRadius: 10,
     resizeMode: 'cover',
     backgroundColor: '#ddd',
+    borderWidth: 1,         
+    borderColor: '#aaa',     
   },
 });
