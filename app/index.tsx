@@ -1,80 +1,213 @@
-import React, { useState } from 'react';
-import { View, Image, Pressable, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { Link } from "expo-router";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 
-
-const bas69GenerateImagePairs = () => {
-  const baseNIM = '10584110';
-  const suffix = '22';
-  const baseURL = 'https://simak.unismuh.ac.id/upload/mahasiswa/';
-  const query = '_.jpg?1751871539';
-  const altURL = 'https://uploads-us-west-2.insided.com/figma-en/attachment/7105e9c010b3d1f0ea893ed5ca3bd58e6cec090e.gif';
-
-  const pairs = [];
-
-  for (let i = 69; i <= 77; i++) {
-    const nim = `${baseNIM}${i}${suffix}`;
-    const main = `${baseURL}${nim}${query}`;
-    const alt = altURL; // semua alternatif sama
-    pairs.push({ main, alt });
-  }
-
-  return pairs;
-};
-
-const bas69ImagePairs = bas69GenerateImagePairs();
-
-export default function Bas69GambarGrid() {
-  const [bas69States, setBas69States] = useState(
-    bas69ImagePairs.map(() => ({ scale: 1, isAlt: false }))
-  );
-
-  const bas69HandlePress = (index: number) => {
-    setBas69States((prev) =>
-      prev.map((item, i) => {
-        if (i !== index) return item;
-        const newScale = item.scale < 2 ? item.scale * 1.2 : 2;
-        return {
-          scale: newScale,
-          isAlt: !item.isAlt,
-        };
-      })
-    );
-  };
-
+export default function Index() {
   return (
-    <ScrollView contentContainerStyle={bas69Styles.grid}>
-      {bas69ImagePairs.map((pair, index) => (
-        <Pressable key={index} onPress={() => bas69HandlePress(index)}>
-          <Image
-            source={{ uri: bas69States[index].isAlt ? pair.alt : pair.main }}
-            style={[
-              bas69Styles.image,
-              {
-                transform: [{ scale: bas69States[index].scale }],
-              },
-            ]}
-          />
-        </Pressable>
-      ))}
+    <ScrollView style={{ flex: 1, backgroundColor: '#f0f8ff' }}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          padding: 20,
+          minHeight: '100%',
+        }}
+      >
+        {/* Header dengan Font Custom */}
+        <Text style={{
+          fontFamily: "fontBas",
+          fontSize: 28,
+          fontWeight: 'bold',
+          textAlign: 'center',
+          marginBottom: 20,
+          color: '#2c3e50',
+        }}>
+          Selamat Datang! 🎉
+        </Text>
+
+        {/* Profil dengan Font yang Berbeda */}
+        <View style={{
+          backgroundColor: 'white',
+          padding: 25,
+          borderRadius: 15,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.1,
+          shadowRadius: 6,
+          elevation: 5,
+          marginBottom: 30,
+        }}>
+          <Text style={{
+            fontFamily: "fontBas",
+            fontSize: 18,
+            textAlign: 'center',
+            lineHeight: 28,
+            color: '#34495e',
+            marginBottom: 15,
+          }}>
+            Halo Kak, Nama Saya Baso Hamzah
+          </Text>
+          
+          <Text style={{
+            fontFamily: "SpaceMono-Regular",
+            fontSize: 14,
+            textAlign: 'center',
+            lineHeight: 22,
+            color: '#7f8c8d',
+            marginBottom: 10,
+          }}>
+            📚 Mahasiswa Universitas Negeri Makassar
+          </Text>
+          
+          <Text style={{
+            fontFamily: "SpaceMono-Regular",
+            fontSize: 14,
+            textAlign: 'center',
+            lineHeight: 22,
+            color: '#7f8c8d',
+            marginBottom: 10,
+          }}>
+            🏛️ Fakultas Teknik
+          </Text>
+          
+          <Text style={{
+            fontFamily: "SpaceMono-Regular",
+            fontSize: 14,
+            textAlign: 'center',
+            lineHeight: 22,
+            color: '#7f8c8d',
+            marginBottom: 10,
+          }}>
+            💻 Jurusan Teknik Informatika
+          </Text>
+          
+          <Text style={{
+            fontFamily: "SpaceMono-Regular",
+            fontSize: 14,
+            textAlign: 'center',
+            lineHeight: 22,
+            color: '#7f8c8d',
+          }}>
+            🎓 Angkatan 2022
+          </Text>
+        </View>
+
+        {/* Navigation Buttons */}
+        <View style={{
+          width: '100%',
+          gap: 15,
+          marginBottom: 20,
+        }}>
+          <Link href="/nama-list" asChild>
+            <TouchableOpacity style={{
+              backgroundColor: '#e74c3c',
+              paddingHorizontal: 30,
+              paddingVertical: 15,
+              borderRadius: 25,
+              shadowColor: '#e74c3c',
+              shadowOffset: { width: 0, height: 4 },
+              shadowOpacity: 0.3,
+              shadowRadius: 6,
+              elevation: 5,
+            }}>
+              <Text style={{
+                fontFamily: "fontBas",
+                fontSize: 16,
+                color: 'white',
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+                📝 Lihat 10 Nama (10 Font Berbeda)
+              </Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/gambar-grid" asChild>
+            <TouchableOpacity style={{
+              backgroundColor: '#2ecc71',
+              paddingHorizontal: 30,
+              paddingVertical: 15,
+              borderRadius: 25,
+              shadowColor: '#2ecc71',
+              shadowOffset: { width: 0, height: 4 },
+              shadowOpacity: 0.3,
+              shadowRadius: 6,
+              elevation: 5,
+            }}>
+              <Text style={{
+                fontFamily: "fontBas",
+                fontSize: 16,
+                color: 'white',
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+                📸 Grid Gambar NIM 69-77
+              </Text>
+            </TouchableOpacity>
+          </Link>
+
+          <Link href="/fonts-demo" asChild>
+            <TouchableOpacity style={{
+              backgroundColor: '#3498db',
+              paddingHorizontal: 30,
+              paddingVertical: 15,
+              borderRadius: 25,
+              shadowColor: '#3498db',
+              shadowOffset: { width: 0, height: 4 },
+              shadowOpacity: 0.3,
+              shadowRadius: 6,
+              elevation: 5,
+            }}>
+              <Text style={{
+                fontFamily: "fontBas",
+                fontSize: 16,
+                color: 'white',
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}>
+                🎨 Demo Semua Font
+              </Text>
+            </TouchableOpacity>
+          </Link>
+        </View>
+
+        <Text style={{
+          fontFamily: "SpaceMono-Regular",
+          fontSize: 12,
+          color: '#95a5a6',
+          marginTop: 10,
+          textAlign: 'center',
+        }}>
+          Aplikasi ini menggunakan 12 font berbeda dengan perulangan import
+        </Text>
+
+        <View style={{
+          backgroundColor: '#fff3cd',
+          padding: 15,
+          borderRadius: 10,
+          marginTop: 20,
+          borderWidth: 1,
+          borderColor: '#ffeaa7',
+        }}>
+          <Text style={{
+            fontFamily: "fontBas",
+            fontSize: 14,
+            color: '#856404',
+            textAlign: 'center',
+            marginBottom: 5,
+          }}>
+            🎯 NIM Anda: 69
+          </Text>
+          <Text style={{
+            fontFamily: "SpaceMono-Regular",
+            fontSize: 12,
+            color: '#856404',
+            textAlign: 'center',
+          }}>
+            5 nama sebelum dan sesudah NIM 69
+          </Text>
+        </View>
+      </View>
     </ScrollView>
   );
 }
-
-const bas69Styles = StyleSheet.create({
-  grid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    padding: 10,
-  },
-  image: {
-    width: Dimensions.get('window').width / 3 - 20,
-    height: Dimensions.get('window').width / 3 - 20,
-    margin: 5,
-    borderRadius: 10,
-    resizeMode: 'cover',
-    backgroundColor: '#ddd',
-    borderWidth: 1,         
-    borderColor: '#aaa',     
-  },
-});
