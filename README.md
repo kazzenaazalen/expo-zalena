@@ -84,7 +84,7 @@ export default function Index() {
     </ScrollView>
   );
 }
-
+==================================================================================================
 TUGAS 2
 import React, { useState } from 'react';
 import { View, Image, Pressable, StyleSheet, Dimensions, ScrollView } from 'react-native';
@@ -183,6 +183,7 @@ const zal71Styles = StyleSheet.create({
   },
 });
 
+===================================================================================================
 TUGAS 2 NEW UPDATE
 import React, { useState } from 'react';
 import { View, Image, Pressable, StyleSheet, Dimensions, ScrollView } from 'react-native';
@@ -277,3 +278,39 @@ const zal71Styles = StyleSheet.create({
   },
 });
 
+============================================================================================
+Pertemuan untuk tugas ke-4(fonts)
+
+import { Image, ScrollView, Text, View } from "react-native";
+
+export default function Index() {
+  return (
+   <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Text style={{
+        fontFamily : "josefin-sans",
+      }}>
+        Halo Kak, Nama Saya Kazzenaa Zalen
+
+
+    
+
+      </Text>
+    </View>
+  );
+}
+
+========================================================================
+FILE DALAM LAYOUT>APP
+
+  return <Stack>
+    <Stack.Screen name="(tabs)" options={{ 
+      headerShown: false 
+    }} />
+  </Stack>
+}

@@ -1,27 +1,35 @@
-import { Stack } from "expo-router";
-import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-
-SplashScreen.preventAutoHideAsync();
-//melarang agar tidak tertutup otomatis sebelum disuruh berhenti
-
-export default function RootLayout() {
-  const [ loaded, error ] = useFonts({
-    "josefin-sans": 
-    require("../assets/fonts/JosefinSans-Italic-VariableFont_wght.ttf"),
-  });
-
-useEffect (() =>{
-  if (loaded && error == null) {
-    SplashScreen.hideAsync();
-  }
-}, [loaded, error]);
-
-if (!loaded && !error) {
-  return null;
-}
+import React from "react";
+import { View, TouchableOpacity } from "react-native";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import { Tabs} from "expo-router";
 
 
-  return <Stack />;
+export default function TabBarRoot() {
+  return (
+    <Tabs
+      screenOptions={{
+        header: ({ navigation }) => (
+          <View
+            style={{
+              backgroundColor: "whitesmoke",
+              borderBottomWidth: 1,
+              borderBottomColor: "black",
+              padding: 10,
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("index");
+              }}
+            >
+              <AntDesign name="home" size={24} color="black" />
+            </TouchableOpacity>
+          </View>
+        ),
+      }}
+    >
+      <Tabs.Screen name="index" options={{ title: "Halaman Utama" }} />
+      <Tabs.Screen name="about" options={{ title: "Tentang Saya" }} />
+    </Tabs>
+  );
 }
