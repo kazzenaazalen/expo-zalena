@@ -45,7 +45,7 @@ export default function Index() {
             color: '#34495e',
             marginBottom: 15,
           }}>
-            Halo Kak, Nama Saya Baso Hamzah
+            Halo! Saya Zalna Nur Islamiah
           </Text>
           
           <Text style={{
@@ -122,53 +122,10 @@ export default function Index() {
             </TouchableOpacity>
           </Link>
 
-          <Link href="/gambar-grid" asChild>
-            <TouchableOpacity style={{
-              backgroundColor: '#2ecc71',
-              paddingHorizontal: 30,
-              paddingVertical: 15,
-              borderRadius: 25,
-              shadowColor: '#2ecc71',
-              shadowOffset: { width: 0, height: 4 },
-              shadowOpacity: 0.3,
-              shadowRadius: 6,
-              elevation: 5,
-            }}>
-              <Text style={{
-                fontFamily: "fontBas",
-                fontSize: 16,
-                color: 'white',
-                fontWeight: 'bold',
-                textAlign: 'center',
-              }}>
-                📸 Grid Gambar NIM 69-77
-              </Text>
-            </TouchableOpacity>
-          </Link>
+         
 
-          <Link href="/fonts-demo" asChild>
-            <TouchableOpacity style={{
-              backgroundColor: '#3498db',
-              paddingHorizontal: 30,
-              paddingVertical: 15,
-              borderRadius: 25,
-              shadowColor: '#3498db',
-              shadowOffset: { width: 0, height: 4 },
-              shadowOpacity: 0.3,
-              shadowRadius: 6,
-              elevation: 5,
-            }}>
-              <Text style={{
-                fontFamily: "fontBas",
-                fontSize: 16,
-                color: 'white',
-                fontWeight: 'bold',
-                textAlign: 'center',
-              }}>
-                🎨 Demo Semua Font
-              </Text>
-            </TouchableOpacity>
-          </Link>
+          
+          
         </View>
 
         <Text style={{
@@ -196,7 +153,7 @@ export default function Index() {
             textAlign: 'center',
             marginBottom: 5,
           }}>
-            🎯 NIM Anda: 69
+            🎯 NIM Anda: 71
           </Text>
           <Text style={{
             fontFamily: "SpaceMono-Regular",
@@ -204,7 +161,7 @@ export default function Index() {
             color: '#856404',
             textAlign: 'center',
           }}>
-            5 nama sebelum dan sesudah NIM 69
+            5 nama sebelum dan sesudah NIM 71
           </Text>
         </View>
       </View>
