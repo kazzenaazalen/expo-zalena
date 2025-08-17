@@ -1,11 +1,11 @@
-import { Tabs } from "expo-router";
+// import { Tabs } from "expo-router";
 
-export default function Layout() {
-  return (
-    <Tabs>
-      <Tabs.Screen name="index" options={{ title: "Home" }} />
-      <Tabs.Screen name="about" options={{ title: "About" }} />
-      <Tabs.Screen name="profil" options={{ title: "Profil" }} />
-    </Tabs>
-  );
-}
+// export default function Layout() {
+//   return (
+//     <Tabs>
+//       <Tabs.Screen name="index" options={{ title: "Home" }} />
+//       <Tabs.Screen name="about" options={{ title: "About" }} />
+//       <Tabs.Screen name="profil" options={{ title: "Profil" }} />
+//     </Tabs>
+//   );
+// }
